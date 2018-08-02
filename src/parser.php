@@ -1,5 +1,7 @@
 <?php
 
+namespace novar\parser;
+
 class Parser
 {
 	private $url;
