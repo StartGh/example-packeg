@@ -29,7 +29,6 @@ class Parser
         }
     }
 
-
 //    Requires improvements
 //	  public function parsing( $tag, array $id = null)
 //    {
@@ -63,12 +62,16 @@ class Parser
             preg_match_all("~<{$tag}[^>]*?>(.*?)</{$tag}>~su", $this->curl_exec(), $match);
         }
 
+        if ( empty($tag) & is_array($id) ) {
+            preg_match_all('~<[^>]+?'. $id[0] .'\s*?=\s*?(["\'])' .$id[1] .'\1[^>]*?>(.+?)</[^>]+?>~su',
+                $this->curl_exec(), $match);
+        }
+
         if (is_array($match)){
             $result = array_pop($match);
-            unset($match);
             return $result;
         } else {
-            return ['Nothing found'];
+            return ["Nothing found.\n\r Check the entered data"];
         }
     }
 
@@ -81,6 +84,5 @@ class Parser
     {
 		curl_close($this->ch);
 	}
-	
 }
 

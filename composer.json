@@ -3,7 +3,8 @@
     "description": "Example project",
     "type": "library",
     "require": {
-        "php": "^7.0"
+        "php": "^7.0",
+        "curl": "7.58.0"
     },
     "license": "MIT",
     "authors": [
